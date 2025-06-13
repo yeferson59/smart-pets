@@ -79,14 +79,53 @@ export default function LandingPage() {
   return (
     <main className={styles.main}>
       <header className={styles.header}>
-        <Image
-          src="/smartpets-logo.svg"
-          alt="SmartPets Logo"
-          width={80}
-          height={80}
-        />
-        <h1>SmartPets</h1>
-        <p>La forma más inteligente de cuidar a tu mascota</p>
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: "16px",
+              padding: "8px",
+              boxShadow: "0 2px 12px rgba(30,203,225,0.10)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: 80,
+              width: 80,
+            }}
+          >
+            <Image
+              src="/smartpets-logo.jpg"
+              alt="SmartPets Logo"
+              width={64}
+              height={64}
+              style={{ objectFit: "contain", borderRadius: "12px" }}
+              priority
+            />
+          </div>
+          <div>
+            <h1
+              style={{
+                margin: 0,
+                color: "#1ecbe1",
+                fontWeight: 800,
+                fontSize: "2.2rem",
+                letterSpacing: "-1px",
+              }}
+            >
+              SmartPets
+            </h1>
+            <p
+              style={{
+                margin: 0,
+                color: "#666",
+                fontWeight: 500,
+                fontSize: "1.1rem",
+              }}
+            >
+              La forma más inteligente de cuidar a tu mascota
+            </p>
+          </div>
+        </div>
       </header>
       <section className={styles.productSection}>
         <div className={styles.productInfo}>

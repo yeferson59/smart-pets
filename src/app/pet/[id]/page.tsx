@@ -3,7 +3,6 @@ import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import ShareLocation from "../../components/ShareLocation";
 import styles from "./pet-info.module.css";
 
 const Map = dynamic(() => import("../../components/Map"), { ssr: false });
@@ -37,8 +36,6 @@ export default function PetInfoPage() {
   const searchParams = useSearchParams();
   const [petData, setPetData] = useState<PetData | null>(null);
   const [ownerData, setOwnerData] = useState<OwnerData | null>(null);
-  const [showContact, setShowContact] = useState(false);
-  const [emergencyMode, setEmergencyMode] = useState(false);
 
   useEffect(() => {
     // Obtener datos del QR o usar datos de demo
@@ -85,27 +82,6 @@ export default function PetInfoPage() {
     });
   };
 
-  const handleCall = (phone: string) => {
-    window.location.href = `tel:${phone}`;
-  };
-
-  const handleWhatsApp = (phone: string) => {
-    const message = `Hola! Encontré a ${petData?.name}. ¿Es tu mascota?`;
-    const whatsappUrl = `https://wa.me/${phone.replace(
-      /[^0-9]/g,
-      ""
-    )}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, "_blank");
-  };
-
-  const reportFound = () => {
-    setEmergencyMode(true);
-    // Aquí se enviaría una notificación al dueño
-    alert(
-      "¡Notificación enviada al dueño! Gracias por ayudar a reunir a Max con su familia."
-    );
-  };
-
   if (!petData || !ownerData) {
     return (
       <div className={styles.loading}>
@@ -118,13 +94,18 @@ export default function PetInfoPage() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Image
-          src="/smartpets-logo.svg"
-          alt="SmartPets"
-          width={40}
-          height={40}
-        />
-        <h1>SmartPets</h1>
+        <div className={styles.logoRow}>
+          <div className={styles.logoBox}>
+            <Image
+              src="/smartpets-logo.jpg"
+              alt="SmartPets Logo"
+              width={40}
+              height={40}
+              className={styles.logoImg}
+              priority
+            />
+          </div>
+        </div>
         <div className={styles.status}>
           <span className={`${styles.statusBadge} ${styles[petData.status]}`}>
             {petData.status === "safe"
@@ -135,12 +116,6 @@ export default function PetInfoPage() {
           </span>
         </div>
       </header>
-
-      {emergencyMode && (
-        <div className={styles.emergencyBanner}>
-          🚨 ¡Modo Emergencia Activado! El dueño ha sido notificado.
-        </div>
-      )}
 
       <main className={styles.main}>
         <section className={styles.petSection}>
@@ -197,77 +172,6 @@ export default function PetInfoPage() {
               <p>{petData.medicalInfo}</p>
             </div>
           </div>
-        </section>
-
-        <section className={styles.actionSection}>
-          <h3>¿Encontraste a {petData.name}?</h3>
-          <p>Usa cualquiera de estas opciones para contactar al dueño:</p>
-
-          <div className={styles.actionButtons}>
-            <button className={styles.emergencyButton} onClick={reportFound}>
-              🚨 ¡La encontré!
-            </button>
-
-            <button
-              className={styles.contactButton}
-              onClick={() => setShowContact(!showContact)}
-            >
-              📞 Ver Contacto
-            </button>
-          </div>
-
-          {showContact && (
-            <div className={styles.contactInfo}>
-              <h4>👤 Información del Dueño</h4>
-              <div className={styles.contactDetails}>
-                <div className={styles.contactItem}>
-                  <span className={styles.label}>Nombre:</span>
-                  <span>{ownerData.name}</span>
-                </div>
-                <div className={styles.contactActions}>
-                  <button
-                    className={styles.callButton}
-                    onClick={() => handleCall(ownerData.phone)}
-                  >
-                    📞 Llamar: {ownerData.phone}
-                  </button>
-                  <button
-                    className={styles.whatsappButton}
-                    onClick={() => handleWhatsApp(ownerData.phone)}
-                  >
-                    💬 WhatsApp
-                  </button>
-                  <ShareLocation
-                    petName={petData.name}
-                    ownerPhone={ownerData.phone}
-                    coordinates={[-34.6037, -58.3816]}
-                  />
-                </div>
-                <div className={styles.contactItem}>
-                  <span className={styles.label}>Email:</span>
-                  <a href={`mailto:${ownerData.email}`}>{ownerData.email}</a>
-                </div>
-                <div className={styles.contactItem}>
-                  <span className={styles.label}>Dirección:</span>
-                  <span>{ownerData.address}</span>
-                </div>
-                <div className={styles.contactItem}>
-                  <span className={styles.label}>Contacto de emergencia:</span>
-                  <span>{ownerData.emergencyContact}</span>
-                </div>
-                <div className={styles.contactItem}>
-                  <span className={styles.label}>Veterinario:</span>
-                  <span>{ownerData.veterinarian}</span>
-                  <button
-                    className={styles.vetButton}
-                    onClick={() => handleCall(ownerData.vetPhone)}
-                  >
-                    📞 {ownerData.vetPhone}
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
         </section>
 
         <section className={styles.mapSection}>

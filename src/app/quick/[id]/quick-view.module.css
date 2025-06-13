@@ -1,0 +1,448 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1e1e1e 50%, #1ecbe1 100%);
+  color: #fff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: #1ecbe1;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(30, 203, 225, 0.3);
+  border-top: 4px solid #1ecbe1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1ecbe1;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+}
+
+.statusBadge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statusBadge.safe {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.5);
+}
+
+.statusBadge.missing {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.5);
+}
+
+.statusBadge.found {
+  background: rgba(30, 203, 225, 0.2);
+  color: #1ecbe1;
+  border: 1px solid rgba(30, 203, 225, 0.5);
+}
+
+.emergencyBanner {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.main {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.petSection {
+  background: rgba(24, 24, 24, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.petHeader {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.petPhoto {
+  flex-shrink: 0;
+}
+
+.photo {
+  border-radius: 50%;
+  border: 4px solid #1ecbe1;
+  object-fit: cover;
+}
+
+.petBasicInfo h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1ecbe1;
+}
+
+.breed {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin: 0 0 1rem 0;
+}
+
+.lastSeen {
+  color: #999;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.petDetails h3 {
+  color: #1ecbe1;
+  margin: 0 0 1.5rem 0;
+  font-size: 1.3rem;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.label {
+  font-weight: 600;
+  color: #ccc;
+}
+
+.medicalInfo {
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.medicalInfo h4 {
+  margin: 0 0 1rem 0;
+  color: #ffc107;
+}
+
+.actionSection {
+  background: rgba(24, 24, 24, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.actionSection h3 {
+  color: #1ecbe1;
+  margin: 0 0 1rem 0;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.emergencyButton {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.emergencyButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4);
+}
+
+.contactButton {
+  background: linear-gradient(135deg, #1ecbe1, #16a085);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contactButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(30, 203, 225, 0.4);
+}
+
+.contactInfo {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+
+.contactInfo h4 {
+  color: #1ecbe1;
+  margin: 0 0 1.5rem 0;
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.contactActions {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.callButton,
+.whatsappButton,
+.vetButton {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.callButton {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.whatsappButton {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: white;
+}
+
+.vetButton {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+}
+
+.callButton:hover,
+.whatsappButton:hover,
+.vetButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.mapSection {
+  background: rgba(24, 24, 24, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mapSection h3 {
+  color: #1ecbe1;
+  margin: 0 0 1.5rem 0;
+}
+
+.footer {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.contactButton {
+  background: linear-gradient(135deg, #1ecbe1, #16a085);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contactButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(30, 203, 225, 0.4);
+}
+
+.fullInfoButton {
+  background: linear-gradient(135deg, #6366f1, #1ecbe1);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.fullInfoButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+}
+
+.callButton {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.whatsappButton {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.callButton:hover,
+.whatsappButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .main {
+    padding: 1rem;
+  }
+
+  .petHeader {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+  }
+
+  .contactActions {
+    flex-direction: column;
+  }
+
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contactItem {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}

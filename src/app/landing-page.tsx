@@ -55,9 +55,9 @@ export default function LandingPage() {
   };
 
   // URL para la página de información de la mascota
-  const petInfoUrl = `${
+  const quickViewUrl = `${
     typeof window !== "undefined" ? window.location.origin : ""
-  }/pet/${petData.id}?data=${encodeURIComponent(
+  }/quick/${petData.id}?data=${encodeURIComponent(
     JSON.stringify({ pet: petData, owner: ownerData })
   )}`;
 
@@ -100,7 +100,7 @@ export default function LandingPage() {
         <div className={styles.qrSection}>
           <h3>Escanea el QR de Demo</h3>
           <QRCodeCanvas
-            value={petInfoUrl}
+            value={quickViewUrl}
             size={140}
             bgColor="#fff"
             fgColor="#1ecbe1"
@@ -116,7 +116,7 @@ export default function LandingPage() {
             👆 Escanea para ver la demo completa
           </p>
           <button
-            onClick={() => window.open(petInfoUrl, "_blank")}
+            onClick={() => window.open(quickViewUrl, "_blank")}
             style={{
               marginTop: "1rem",
               padding: "0.5rem 1rem",

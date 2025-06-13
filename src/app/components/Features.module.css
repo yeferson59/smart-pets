@@ -1,0 +1,118 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 3rem 0;
+  padding: 0 1rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1ecbe1;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #1ecbe1, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.featureCard {
+  background: rgba(24, 24, 24, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(30, 203, 225, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.featureCard:hover::before,
+.featureCard.active::before {
+  left: 100%;
+}
+
+.featureCard:hover,
+.featureCard.active {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(30, 203, 225, 0.2);
+  border-color: rgba(30, 203, 225, 0.3);
+}
+
+.iconContainer {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem auto;
+  background: linear-gradient(135deg, #1ecbe1, #16a085);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover .iconContainer,
+.featureCard.active .iconContainer {
+  transform: scale(1.1);
+  box-shadow: 0 10px 30px rgba(30, 203, 225, 0.4);
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.featureTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.featureCard:hover .featureTitle,
+.featureCard.active .featureTitle {
+  color: #1ecbe1;
+}
+
+.featureDescription {
+  color: #b0b0b0;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .featureCard {
+    padding: 2rem 1.5rem;
+  }
+}

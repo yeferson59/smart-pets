@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.petSection, .ownerSection {
+  background: #ffffff10;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #ffffff20;
+}
+
+.petSection h3, .ownerSection h3 {
+  color: #1ecbe1;
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.infoGrid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.infoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ffffff10;
+}
+
+.infoItem:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.value {
+  color: #1ecbe1;
+  font-weight: 500;
+}
+
+.contactButton {
+  background: linear-gradient(135deg, #1ecbe1, #16a085);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.contactButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 203, 225, 0.3);
+}
+
+.contactInfo {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.phoneLink {
+  color: #1ecbe1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.phoneLink:hover {
+  color: #16a085;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .infoItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+}

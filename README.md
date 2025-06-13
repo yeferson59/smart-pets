@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🐾 SmartPets - Landing Page
 
-## Getting Started
+Una elegante landing page para SmartPets, un collar GPS inteligente para mascotas que incluye códigos QR para información de contacto rápida.
 
-First, run the development server:
+## ✨ Características
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **🎨 Diseño Moderno**: Interfaz elegante con gradientes y efectos de vidrio esmerilado
+- **📍 Mapa Interactivo**: Visualización de ubicación en tiempo real usando Leaflet
+- **📱 Código QR Dinámico**: Generación de QR con información de la mascota y dueño
+- **📋 Información Detallada**: Componente interactivo para mostrar datos al escanear QR
+- **🚀 Características del Producto**: Grid animado con las ventajas de SmartPets
+- **💰 Call-to-Action**: Sección de precios y suscripción por email
+- **📱 Responsive**: Diseño adaptable para todos los dispositivos
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Next.js 15.3.3** - Framework React con App Router
+- **TypeScript** - Tipado estático
+- **React Leaflet** - Mapas interactivos
+- **QRCode.react** - Generación de códigos QR
+- **CSS Modules** - Estilos encapsulados
+- **Bun** - Runtime y gestor de paquetes
+
+## 🚀 Instalación y Uso
+
+1. **Instalar dependencias:**
+
+   ```bash
+   bun install
+   ```
+
+2. **Ejecutar en desarrollo:**
+
+   ```bash
+   bun run dev
+   ```
+
+3. **Construir para producción:**
+
+   ```bash
+   bun run build
+   ```
+
+4. **Ejecutar en producción:**
+   ```bash
+   bun run start
+   ```
+
+La aplicación estará disponible en [http://localhost:3000](http://localhost:3000)
+
+## 📁 Estructura del Proyecto
+
+```
+src/app/
+├── components/
+│   ├── CTA.tsx           # Call-to-action con pricing
+│   ├── Features.tsx      # Grid de características
+│   ├── Map.tsx          # Mapa interactivo
+│   └── PetInfo.tsx      # Información de mascota/dueño
+├── landing-page.tsx     # Página principal
+├── landing.module.css   # Estilos principales
+└── page.tsx            # Página de entrada
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Paleta de Colores
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Primario**: `#1ecbe1` (Azul turquesa)
+- **Secundario**: `#16a085` (Verde turquesa)
+- **Fondo**: Gradiente de negro a turquesa
+- **Texto**: Blanco y grises
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📱 Características Responsive
 
-## Learn More
+- **Desktop**: Layout en grid con sidebar para QR
+- **Tablet**: Diseño adaptado con elementos apilados
+- **Mobile**: Vista de columna única optimizada
 
-To learn more about Next.js, take a look at the following resources:
+## 🔧 Configuración
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Variables de Entorno (Opcional)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Puedes agregar variables de entorno en `.env.local`:
 
-## Deploy on Vercel
+```env
+NEXT_PUBLIC_MAPS_API_KEY=tu_api_key_aqui
+NEXT_PUBLIC_ANALYTICS_ID=tu_analytics_id
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Personalización
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Logo**: Reemplaza `/public/smartpets-logo.svg` con tu logo
+- **Colores**: Modifica las variables CSS en los archivos `.module.css`
+- **Contenido**: Actualiza los datos en `landing-page.tsx`
+
+## 🚀 Deployment
+
+### Vercel (Recomendado)
+
+```bash
+vercel --prod
+```
+
+### Netlify
+
+```bash
+netlify deploy --prod --dir=out
+```
+
+## 📄 Licencia
+
+Este proyecto es parte de SmartPets © 2025. Todos los derechos reservados.
+
+---
+
+Desarrollado con ❤️ para mantener a nuestras mascotas seguras.

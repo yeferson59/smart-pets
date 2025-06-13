@@ -113,13 +113,18 @@ export default function QuickPetView() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Image
-          src="/smartpets-logo.svg"
-          alt="SmartPets"
-          width={40}
-          height={40}
-        />
-        <h1>SmartPets</h1>
+        <div className={styles.logoRow}>
+          <div className={styles.logoBox}>
+            <Image
+              src="/smartpets-logo.jpg"
+              alt="SmartPets Logo"
+              width={40}
+              height={40}
+              className={styles.logoImg}
+              priority
+            />
+          </div>
+        </div>
         <div className={styles.status}>
           <span className={`${styles.statusBadge} ${styles[petData.status]}`}>
             {petData.status === "safe"

@@ -69,7 +69,7 @@ export default function QuickPetView() {
     });
     setOwnerData({
       name: "Ana Isabel Carrillo",
-      phone: "3183455554",
+      phone: "+57 3183455554",
     });
   };
 

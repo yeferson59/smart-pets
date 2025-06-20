@@ -48,7 +48,7 @@ export default function LandingPage() {
 
   const ownerData = {
     name: "Ana Isabel Carrillo",
-    phone: "3183455554",
+    phone: "+57 3183455554",
     email: "",
     address: "",
     emergencyContact: "",

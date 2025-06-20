@@ -31,34 +31,36 @@ export default function LandingPage() {
   // Datos completos para la demo del QR
   const petData = {
     id: "SP001",
-    name: "Max",
+    name: "Alma",
     species: "Perro",
-    breed: "Labrador Retriever",
+    breed: "Cocker Spaniel",
     age: "3 años",
-    color: "Negro",
-    weight: "28 kg",
-    microchip: "MX123456789",
-    photo: "/pet-profile.jpg",
-    medicalInfo: "Vacunas al día. Alérgico al chocolate.",
+    color: "Dorado",
+    weight: "12 kg",
+    microchip: "SP-COCKER-2024",
+    photo: "/pet-demo.jpg",
+    medicalInfo: "Sin condición médica",
+    alergia: "No presenta",
+    sterilized: "Esterilizada",
     lastSeen: new Date().toLocaleString("es-ES"),
     status: "safe",
   };
 
   const ownerData = {
-    name: "Juan Pérez",
-    phone: "+54 11 1234-5678",
-    email: "juan.perez@email.com",
-    address: "Av. Corrientes 1234, CABA, Argentina",
-    emergencyContact: "+54 11 8765-4321 (María Pérez)",
-    veterinarian: "Dr. García - Clínica Veterinaria Central",
-    vetPhone: "+54 11 5555-0123",
+    name: "Ana Isabel Carrillo",
+    phone: "3183455554",
+    email: "",
+    address: "",
+    emergencyContact: "",
+    veterinarian: "",
+    vetPhone: "",
   };
 
   // URL para la página de información de la mascota
   const quickViewUrl = `${
     typeof window !== "undefined" ? window.location.origin : ""
   }/quick/${petData.id}?data=${encodeURIComponent(
-    JSON.stringify({ pet: petData, owner: ownerData })
+    JSON.stringify({ pet: petData, owner: ownerData }),
   )}`;
 
   // Para compatibilidad con el componente PetInfo existente
@@ -69,6 +71,9 @@ export default function LandingPage() {
     edad: petData.age,
     color: petData.color,
     foto: petData.photo,
+    esterilizada: petData.sterilized,
+    alergia: petData.alergia,
+    medicalInfo: petData.medicalInfo,
   };
   const legacyOwnerData = {
     nombre: ownerData.name,

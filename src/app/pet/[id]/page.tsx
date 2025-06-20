@@ -5,21 +5,21 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import styles from "./pet-info.module.css";
 
-const Map = dynamic(() => import("../../components/Map"), { ssr: false });
+const Map = dynamic(() => import("../../components/Map-demo"), { ssr: false });
 
 interface PetData {
   id: string;
   name: string;
   species: string;
   breed: string;
-  age: string;
-  color: string;
-  weight: string;
   microchip: string;
+  alergia: string;
   photo: string;
   medicalInfo: string;
   lastSeen: string;
   status: "safe" | "missing" | "found";
+  age: string;
+  sterilized: string;
 }
 
 interface OwnerData {
@@ -58,27 +58,27 @@ export default function PetInfoPage() {
   const loadDemoData = () => {
     setPetData({
       id: "SP001",
-      name: "Max",
+      name: "Alma",
       species: "Perro",
-      breed: "Labrador Retriever",
-      age: "3 años",
-      color: "Negro",
-      weight: "28 kg",
-      microchip: "MX123456789",
-      photo: "/pet-profile.jpg",
-      medicalInfo: "Vacunas al día. Alérgico al chocolate.",
+      breed: "Cocker Spaniel",
+      alergia: "No presenta",
+      microchip: "SP-COCKER-2024",
+      photo: "/pet-demo.jpg",
+      medicalInfo: "Sin condición médica",
       lastSeen: new Date().toLocaleString("es-ES"),
       status: "safe",
+      age: "3 años",
+      sterilized: "Esterilizada",
     });
 
     setOwnerData({
-      name: "Juan Pérez",
-      phone: "+54 11 1234-5678",
-      email: "juan.perez@email.com",
-      address: "Av. Corrientes 1234, CABA, Argentina",
-      emergencyContact: "+54 11 8765-4321 (María Pérez)",
-      veterinarian: "Dr. García - Clínica Veterinaria Central",
-      vetPhone: "+54 11 5555-0123",
+      name: "Ana Isabel Carrillo",
+      phone: "+57 3183455554",
+      email: "",
+      address: "",
+      emergencyContact: "",
+      veterinarian: "",
+      vetPhone: "",
     });
   };
 
@@ -111,8 +111,8 @@ export default function PetInfoPage() {
             {petData.status === "safe"
               ? "✅ Seguro"
               : petData.status === "missing"
-              ? "🚨 Perdido"
-              : "🎉 Encontrado"}
+                ? "🚨 Perdido"
+                : "🎉 Encontrado"}
           </span>
         </div>
       </header>
@@ -154,12 +154,8 @@ export default function PetInfoPage() {
                 <span>{petData.age}</span>
               </div>
               <div className={styles.detail}>
-                <span className={styles.label}>Color:</span>
-                <span>{petData.color}</span>
-              </div>
-              <div className={styles.detail}>
-                <span className={styles.label}>Peso:</span>
-                <span>{petData.weight}</span>
+                <span className={styles.label}>Esterilizada:</span>
+                <span>{petData.sterilized}</span>
               </div>
               <div className={styles.detail}>
                 <span className={styles.label}>Microchip:</span>

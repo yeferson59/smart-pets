@@ -10,7 +10,6 @@ interface PetData {
   species: string;
   breed: string;
   age: string;
-  color: string;
   status: "safe" | "missing" | "found";
   photo: string;
 }
@@ -37,9 +36,8 @@ export default function QuickPetView() {
           id: parsedData.pet.id,
           name: parsedData.pet.name,
           species: parsedData.pet.species,
-          breed: parsedData.pet.breed,
           age: parsedData.pet.age,
-          color: parsedData.pet.color,
+          breed: parsedData.pet.breed,
           status: parsedData.pet.status,
           photo: parsedData.pet.photo,
         });
@@ -50,7 +48,7 @@ export default function QuickPetView() {
       } catch (error) {
         console.error("Error parsing QR data:", error);
         setError(
-          "Error al leer el QR. Intenta nuevamente o contacta a SmartPets."
+          "Error al leer el QR. Intenta nuevamente o contacta a SmartPets.",
         );
         loadDemoData();
       }
@@ -62,17 +60,16 @@ export default function QuickPetView() {
   const loadDemoData = () => {
     setPetData({
       id: "SP001",
-      name: "Max",
+      name: "Alma",
       species: "Perro",
-      breed: "Labrador Retriever",
       age: "3 años",
-      color: "Negro",
+      breed: "Cocker Spaniel",
       status: "safe",
-      photo: "/pet-profile.jpg",
+      photo: "/pet-demo.jpg",
     });
     setOwnerData({
-      name: "Juan Pérez",
-      phone: "+54 11 1234-5678",
+      name: "Ana Isabel Carrillo",
+      phone: "3183455554",
     });
   };
 
@@ -84,7 +81,7 @@ export default function QuickPetView() {
     const message = `Hola! Encontré a ${petData?.name}. ¿Es tu mascota?`;
     const whatsappUrl = `https://wa.me/${phone.replace(
       /[^0-9]/g,
-      ""
+      "",
     )}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
@@ -92,8 +89,8 @@ export default function QuickPetView() {
   const goToFullInfo = () => {
     router.push(
       `/pet/${petData?.id}?data=${encodeURIComponent(
-        searchParams.get("data") || ""
-      )}`
+        searchParams.get("data") || "",
+      )}`,
     );
   };
 
@@ -130,8 +127,8 @@ export default function QuickPetView() {
             {petData.status === "safe"
               ? "✅ Seguro"
               : petData.status === "missing"
-              ? "🚨 Perdido"
-              : "🎉 Encontrado"}
+                ? "🚨 Perdido"
+                : "🎉 Encontrado"}
           </span>
         </div>
       </header>
@@ -154,12 +151,6 @@ export default function QuickPetView() {
                 <div>
                   <span className={styles.label}>Especie:</span>{" "}
                   {petData.species}
-                </div>
-                <div>
-                  <span className={styles.label}>Edad:</span> {petData.age}
-                </div>
-                <div>
-                  <span className={styles.label}>Color:</span> {petData.color}
                 </div>
               </div>
             </div>

@@ -144,11 +144,52 @@ export default function LandingPage() {
         <div className={styles.qrSection}>
           <h3>Escanea el QR de Demo</h3>
           <QRCodeCanvas
+            id="demo-qr-canvas"
             value={quickViewUrl}
             size={140}
             bgColor="#fff"
             fgColor="#1ecbe1"
           />
+          <button
+            className={styles.qrDownloadButton}
+            onClick={async () => {
+              // Cargar dinámicamente QRCodeCanvas y ReactDOM para evitar problemas SSR
+              const { QRCodeCanvas } = await import("qrcode.react");
+              const { createRoot } = await import("react-dom/client");
+              const tempDiv = document.createElement("div");
+              document.body.appendChild(tempDiv);
+
+              const root = createRoot(tempDiv);
+              root.render(
+                <QRCodeCanvas
+                  value={quickViewUrl}
+                  size={560}
+                  bgColor="#000"
+                  fgColor="#fff"
+                  includeMargin={true}
+                  id="download-qr-canvas"
+                />,
+              );
+
+              // Esperar a que el QR se renderice en el DOM antes de capturarlo
+              setTimeout(() => {
+                const canvas = tempDiv.querySelector(
+                  "canvas",
+                ) as HTMLCanvasElement;
+                if (canvas) {
+                  const url = canvas.toDataURL("image/png");
+                  const link = document.createElement("a");
+                  link.href = url;
+                  link.download = "smartpets-demo-qr.png";
+                  link.click();
+                }
+                root.unmount();
+                document.body.removeChild(tempDiv);
+              }, 100); // 100ms para asegurar renderizado
+            }}
+          >
+            Descargar QR en alta resolución (blanco sobre negro)
+          </button>
           <p
             style={{
               fontSize: "12px",

@@ -10,7 +10,8 @@
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -22,7 +23,11 @@
   min-height: 100vh;
   background: linear-gradient(135deg, #0a0a0a 0%, #1e1e1e 50%, #1ecbe1 100%);
   color: #fff;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,6 +109,36 @@
   min-width: 200px;
 }
 
+.qrDownloadButton {
+  margin-top: 1rem;
+  background: linear-gradient(90deg, #1ecbe1 0%, #0a0a0a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 8px rgba(30, 203, 225, 0.15);
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+  outline: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: 0.02em;
+}
+
+.qrDownloadButton:hover,
+.qrDownloadButton:focus {
+  background: linear-gradient(90deg, #0a0a0a 0%, #1ecbe1 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 16px rgba(30, 203, 225, 0.25);
+}
+
 .qrSection h3 {
   color: #333;
   margin: 0 0 1.5rem 0;
@@ -152,7 +187,7 @@
 .footer {
   margin-top: auto;
   padding: 2rem 0;
-  color: #0B1D51;
+  color: #0b1d51;
   font-size: 0.95rem;
   text-align: center;
 }
@@ -161,21 +196,21 @@
   .header h1 {
     font-size: 2.5rem;
   }
-  
+
   .productSection {
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 2rem;
   }
-  
+
   .productInfo {
     max-width: none;
   }
-  
+
   .qrSection {
     justify-self: center;
   }
-  
+
   .main {
     padding: 0 0.5rem;
   }
